@@ -83,7 +83,7 @@ function App() {
     checkUserLogin();
   }, []);
 
-  // Modal
+  // ===== Modal 相關 =====
   const productModalRef = useRef(null);
   const delProductModalRef = useRef(null);
   const [modalMode, setModalMode] = useState(null);
@@ -121,7 +121,7 @@ function App() {
 
   const handleCloseProductModal = () => {
     const modalInstance = Modal.getInstance(productModalRef.current);
-    modalInstance.hide()
+    modalInstance.hide();
   };
 
   const handleOpenDelProductModal = (product) => {
@@ -496,6 +496,7 @@ function App() {
                         </label>
                         <input
                           value={tempProduct.origin_price}
+                          min="0" /* 防止使用者選擇到負值 */
                           onChange={handleModalInputChange}
                           name="origin_price"
                           id="origin_price"
@@ -510,6 +511,7 @@ function App() {
                         </label>
                         <input
                           value={tempProduct.price}
+                          min="0"
                           onChange={handleModalInputChange}
                           name="price"
                           id="price"
